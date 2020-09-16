@@ -1,11 +1,14 @@
 const express = require('express');
-const app = express();
-const path = require('path')
 
-app.use(express.static(_dirname + '/dist'));
+const app = express();
+
+app.use(express.static('./dist/frontfsdapp'));
+
+app.get('/*', function (req, res) {
+  res.sendFile('index.html', { root: 'dist/frontfsdapp' }
+  );
+});
 
 app.listen(process.env.PORT || 8080);
 
-app.get('/*', function(req, res){
-  res.sendFile(path.join(_dirname + '/dist/index.html'));
-})
+console.log(`Running on port ${process.env.PORT || 8080}`)
