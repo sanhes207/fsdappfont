@@ -1,0 +1,30 @@
+<form [formGroup]="AddReactiveForm">
+  <h1 mat-dialog-title>Добавить новую задачу</h1>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Выбрать категорию</mat-label>
+      <mat-select formControlName="project">
+        <mat-option>---</mat-option>
+        <mat-option value="new">Новая задача</mat-option>
+        <mat-option *ngFor="let initProject of project; trackBy: trackByFn" [value]="initProject" >
+          {{ initProject.title }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="AddReactiveForm.value.project === 'new'">
+      <mat-form-field>
+        <mat-label>Название категории</mat-label>
+        <input matInput formControlName="title">
+      </mat-form-field>
+    </div>
+    <mat-form-field>
+      <mat-label>Название задачи</mat-label>
+      <input matInput formControlName="text">
+    </mat-form-field>
+    <br/>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button type="submit" (click)="closeDialog()" color = "warn">Отмена</button>
+    <button mat-raised-button type="submit" (click)="onSubmit()" color = "primary">Добавить</button>
+  </div>
+</form>

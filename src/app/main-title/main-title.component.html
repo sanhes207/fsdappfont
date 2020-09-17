@@ -1,0 +1,4 @@
+<div class="card">
+  <app-card *ngFor="let iterProject of project;
+                    trackBy: trackByFn" [project]="iterProject"></app-card>
+</div>

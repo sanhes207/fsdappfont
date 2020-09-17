@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  prodURI: 'https://fsdapp.herokuapp.com/projects/',
+  todoURI: 'https://fsdapp.herokuapp.com/todos',
   production: false
 };
 
