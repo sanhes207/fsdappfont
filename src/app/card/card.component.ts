@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Project }          fzrom '../models/project';
+import { Project }          from '../models/project';
 
 @Component({
     selector:    'app-card',
