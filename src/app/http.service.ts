@@ -2,7 +2,7 @@ import { Injectable  } from '@angular/core';
 import { HttpClient  } from '@angular/common/http';
 import { Observable  } from 'rxjs';
 import { environment } from '../environments/environment.prod';
-
+import { Todo }        from './models/todo';
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +11,19 @@ export class HttpService {
 
   constructor(private http: HttpClient) {}
 
-  Get(): Observable<object> {
+  getProject(){
     return this.http.get(environment.prodURI);
   }
-  
-  public Update(idProject: number, idTodo: number, isCompleted: boolean): Observable<object> {
-    return this.http.put(environment.prodURI + idProject + '/todos/' + idTodo, {isCompleted});
+
+  public checkUpdate(todo: Todo){
+    return this.http.put(environment.prodURI + todo.project_id + '/todos/' + todo.id, {isCompleted: todo.isCompleted});
   }
 
-  public AddT(text: string, project_id: number): Observable<object> {
-    return this.http.post( environment.todoURI, { project_id, text } )
+  public addTodoList(text: string, project_id: number){
+    return this.http.post( environment.todoURI, { project_id, text } );
   }
 
-  public AddTaP(text: string, title: string): Observable<object>{
+  public addProjectAndTodoList(text: string, title: string){
     return this.http.post( environment.todoURI, { title, text } );
   }
 }

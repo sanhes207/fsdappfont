@@ -15,9 +15,9 @@ export class MainTitleComponent{
   project: Project;
 
   constructor(http: HttpService) {
-    http.Get().pipe(repeat()).subscribe(value =>
-      {this.project = plainToClass(Project, value);
-    });
+    http.getProject().pipe(repeat(1)).subscribe(value =>
+                           {this.project = plainToClass(Project, value);
+                         });
   }
 
   trackByFn(index, item): number {

@@ -13,11 +13,14 @@ import {HttpService}                         from '../http.service';
   providers: [HttpService]
 })
 export class AddTodoFormComponent implements OnInit {
-  constructor(private http: HttpService, public dialogRef: MatDialogRef<AddTodoFormComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: object, private fb: FormBuilder) {
-    http.Get().pipe(
-    ).subscribe(value =>
-    {this.project = plainToClass(Project, value); });
+
+  constructor(private http: HttpService,
+              public dialogRef: MatDialogRef<AddTodoFormComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: object,
+              private fb: FormBuilder)
+  {
+    http.getProject().pipe().subscribe(value =>
+      {this.project = plainToClass(Project, value); });
   }
 
   AddReactiveForm: FormGroup;
@@ -28,13 +31,13 @@ export class AddTodoFormComponent implements OnInit {
   }
 
   closeDialog(): void {
-    this.dialogRef.close('end!' );
+    this.dialogRef.close('end!');
   }
 
   initForm(): void{
     this.AddReactiveForm = this.fb.group({
-      title: [null, [Validators.pattern(/^.{0,30}$/)]],
-      text: [null, [Validators.required, Validators.pattern(/^.{1,30}$/)]],
+      title:   [null, [Validators.pattern(/^.{0,30}$/)]],
+      text:    [null, [Validators.required, Validators.pattern(/^.{1,30}$/)]],
       project: [null, [Validators.required]]
     });
   }
@@ -46,11 +49,11 @@ export class AddTodoFormComponent implements OnInit {
       return;
     }
     if (this.AddReactiveForm.value.project === 'new'){
-      this.http.AddTaP(this.AddReactiveForm.value.text,
+      this.http.addProjectAndTodoList(this.AddReactiveForm.value.text,
         this.AddReactiveForm.value.title).subscribe();
     }
     else{
-      this.http.AddT(this.AddReactiveForm.value.text,
+      this.http.addTodoList(this.AddReactiveForm.value.text,
         this.AddReactiveForm.value.project.id).subscribe();
     }
     this.dialogRef.close();

@@ -5,7 +5,7 @@
       <mat-label>Выбрать категорию</mat-label>
       <mat-select formControlName="project">
         <mat-option>---</mat-option>
-        <mat-option value="new">Новая задача</mat-option>
+        <mat-option value="new">Создать новую задачу</mat-option>
         <mat-option *ngFor="let initProject of project; trackBy: trackByFn" [value]="initProject" >
           {{ initProject.title }}
         </mat-option>
