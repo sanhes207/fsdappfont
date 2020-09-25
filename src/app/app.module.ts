@@ -9,7 +9,6 @@ import { MatCheckboxModule }                from '@angular/material/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule }                    from '@angular/material/card';
 import { MatListModule }                    from '@angular/material/list';
-import { ToolbarComponent }                 from './toolbar/toolbar.component';
 import { MatDialogModule }                  from '@angular/material/dialog';
 import { MatInputModule }                   from '@angular/material/input';
 import { MatOptionModule }                  from '@angular/material/core';
@@ -26,7 +25,6 @@ import { CardComponent }                    from './card/card.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent,
     MainTitleComponent,
     AddTodoFormComponent,
     CheckComponent,

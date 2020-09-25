@@ -1,9 +1,9 @@
-import {Component, Inject, OnInit }          from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef }      from '@angular/material/dialog';
-import {FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {Project}                             from '../models/project';
-import {plainToClass}                        from 'class-transformer';
-import {HttpService}                         from '../http.service';
+import { Component, Inject, OnInit }           from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef }       from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators }  from '@angular/forms';
+import { Project }                             from '../models/project';
+import { plainToClass }                        from 'class-transformer';
+import { HttpService }                         from '../http.service';
 
 
 @Component({
@@ -19,8 +19,9 @@ export class AddTodoFormComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: object,
               private fb: FormBuilder)
   {
-    http.getProject().pipe().subscribe(value =>
-      {this.project = plainToClass(Project, value); });
+    this.http.getProject().subscribe(value => {
+                           this.project = plainToClass(Project, value);
+                         });
   }
 
   AddReactiveForm: FormGroup;
